@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dohyeon Kim - Medical AI Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. THE SETUP - Modernized for Showcase */
+        * {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        body {
+            background-color: #e2e8f0; /* Slightly darker background to make slides pop */
+            display: grid;
+            gap: 50px; /* More space between slides */
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 50px 0;
+            place-items: center;
+            font-family: 'Inter', sans-serif; /* Cleaner, more modern font for screen viewing */
+        }
+
+        /* Slide Container Setup */
+        .slide-container {
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 16px; /* Softer, modern corners */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+        }
+
+        /* Sticky Contact Footer on every slide except title */
+        .contact-footer {
+            position: absolute;
+            bottom: 25px;
+            right: 40px;
+            font-size: 14px;
+            color: #64748b;
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+        
+        .contact-footer a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 2. TYPOGRAPHY */
+        .slide-container h1,
+        .slide-container h2 {
+            color: #0f172a;
+            font-family: 'Merriweather', serif; /* Keep Serif for headings for an academic touch */
+            margin: 0;
+        }
+
+        .slide-container h3 {
+            color: #0f172a;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .slide-container p,
+        .slide-container li {
+            color: #334155;
+        }
+
+        .slide-container h1 {
+            font-size: 56px; /* Slightly adjusted */
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .slide-container .slide-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+        }
+
+        .slide-container h3 {
+            font-size: 26px;
+            margin-bottom: 12px;
+            color: #0284c7;
+        }
+
+        .slide-container p,
+        .slide-container li {
+            font-size: 18px; /* Optimized for reading on iPad/Laptop */
+            line-height: 1.6;
+        }
+
+        .slide-container .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* 3. LAYOUTS */
+        
+        /* Title Slide */
+        .title-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        .title-layout .text-side {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #f8fafc;
+        }
+
+        .title-layout .image-side {
+            background-image: url('https://images.unsplash.com/photo-1576091160550-2173ff9e5eb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80'); /* Modern abstract medical */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .title-layout .image-side::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, #f8fafc 0%, rgba(248, 250, 252, 0) 100%);
+        }
+
+        .title-layout h1 {
+            color: #0f172a;
+            font-size: 60px;
+            margin-bottom: 20px;
+            z-index: 2;
+        }
+
+        .title-layout .subtitle {
+            color: #475569;
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            z-index: 2;
+        }
+
+        .title-layout .contact-badge {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        .title-layout .contact-badge p {
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #64748b;
+        }
+        
+        .title-layout .contact-badge p:last-child { margin-bottom: 0; }
+        .title-layout .contact-badge i { width: 20px; color: #0284c7; }
+
+        /* Two Column Image Right (About Me) */
+        .two-column {
+            align-items: center; /* Center align for better showcase flow */
+            display: grid;
+            grid-template-columns: 55% 40%;
+            gap: 5%;
+            width: 100%;
+        }
+
+        .image-wrapper {
+            border-radius: 12px;
+            height: 380px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .image-wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .two-column ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .two-column li {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .two-column li::before {
+            content: "\f058"; /* FontAwesome Check Circle */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #0ea5e9;
+        }
+
+        /* Showcase Split Layout (For Projects) */
+        .showcase-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            height: 100%;
+        }
+
+        .showcase-sidebar {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .showcase-sidebar .project-icon {
+            font-size: 40px;
+            color: #0284c7;
+            margin-bottom: 20px;
+        }
+
+        .showcase-sidebar h3 {
+            font-size: 28px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #0f172a;
+        }
+
+        .showcase-sidebar p.summary {
+            font-size: 16px;
+            color: #475569;
+            font-style: italic;
+            border-left: 3px solid #cbd5e1;
+            padding-left: 15px;
+        }
+
+        .showcase-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .metric-card .value {
+            display: block;
+            font-size: 28px;
+            font-weight: 700;
+            color: #0284c7;
+            margin-bottom: 5px;
+        }
+
+        .metric-card .label {
+            font-size: 14px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .showcase-main ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .showcase-main li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .showcase-main li::before {
+            content: "•";
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+
+        .showcase-main li strong {
+            color: #0f172a;
+        }
+
+        .project-image-strip {
+            margin-top: 20px;
+            height: 180px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f1f5f9;
+        }
+
+        .project-image-strip img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Tech Stack Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tags span {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title & Contact (Showcase Cover) -->
+<div class="slide-container" style="padding: 0;" id="slide1">
+    <div class="title-layout">
+        <div class="text-side">
+            <h1>Dohyeon Kim</h1>
+            <p class="subtitle">AI Researcher &amp; Engineer<br>Advancing Accessible Healthcare</p>
+            
+            <p style="font-size: 18px; color: #475569; margin-bottom: 40px; max-width: 90%;">
+                Focusing on End-to-End, human-centered AI systems that bridge the gap in healthcare accessibility, from robust medical imaging to real-time interactive patient tools.
+            </p>
+
+            <div class="contact-badge">
+                <p><i class="fa-solid fa-envelope"></i> doxxeon@gmail.com</p>
+                <p><i class="fa-brands fa-github"></i> github.com/doxxeon</p>
+                <p><i class="fa-solid fa-graduation-cap"></i> Sangmyung Univ. Dept. of Human AI</p>
+            </div>
+        </div>
+        <div class="image-side"></div>
+    </div>
+</div>
+
+<!-- Slide 2: Academic & Technical Foundation -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">Foundation &amp; Expertise</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <ul>
+                    <li>
+                        <strong>Sangmyung University</strong><br>
+                        Major: Human AI Engineering | Minors: Bio-medical Eng. &amp; Bio-health Device. <br>
+                        <em>Relevant Coursework: Biomedical Informatics (A+), Deep Learning, Healthcare Algorithms (A).</em>
+                    </li>
+                    <li>
+                        <strong>Biomedical AI Training (Konyang Univ. Hospital)</strong><br>
+                        Hands-on clinical AI training including Medical Image Analysis, EMR systems, and K-MIMIC-III database utilization.
+                    </li>
+                    <li>
+                        <strong>Global Research Trajectory</strong><br>
+                        Selected for the Bio-health Frontier Project (Boston, Martinos Center Hackathon Participant).
+                    </li>
+                    <li>
+                        <strong>Key Recognitions</strong><br>
+                        Comprehensive Excellence Award (Konyang), Popularity Award (Seoul AI Hackathon), Grand Prize (Tech Hackathon for the Disabled).
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 22px; margin-bottom: 20px; color: #0f172a;">Core Tech Stack</h3>
+                
+                <p style="margin-bottom: 5px; font-weight: 600; font-size: 16px;">AI &amp; Computer Vision</p>
+                <div class="tech-tags" style="margin-top: 0; margin-bottom: 20px;">
+                    <span>PyTorch</span><span>TensorFlow</span><span>YOLOv8</span><span>3D U-Net</span><span>OpenCV</span>
+                </div>
+
+                <p style="margin-bottom: 5px; font-weight: 600; font-size: 16px;">Backend &amp; Deployment</p>
+                <div class="tech-tags" style="margin-top: 0; margin-bottom: 20px;">
+                    <span>FastAPI</span><span>Flask</span><span>Docker</span><span>TFLite/CoreML</span>
+                </div>
+
+                <p style="margin-bottom: 5px; font-weight: 600; font-size: 16px;">Frontend &amp; DB</p>
+                <div class="tech-tags" style="margin-top: 0;">
+                    <span>Flutter (iOS/Android)</span><span>MongoDB</span><span>SQLite</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-footer">
+        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+    </div>
+</div>
+
+<!-- Slide 3: Project 1 - BraTS (Showcase Layout) -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">See the Tumor: 3D MRI Segmentation</h2>
+    <div class="content-area">
+        <div class="showcase-layout">
+            <div class="showcase-sidebar">
+                <i class="fa-solid fa-brain project-icon"></i>
+                <h3>Brain Tumor Segmentation &amp; Web Viewer</h3>
+                <p class="summary">An end-to-end interactive platform for pixel-level tumor mask generation, engineered to prevent over-segmentation using ensemble logic.</p>
+                <div class="tech-tags">
+                    <span>2D/3D U-Net</span><span>FastAPI</span><span>NiiVue</span><span>BraTS 2021</span>
+                </div>
+            </div>
+            <div class="showcase-main">
+                <div class="metric-cards">
+                    <div class="metric-card">
+                        <span class="value">0.8280</span>
+                        <span class="label">Val Dice Score</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">0.717</span>
+                        <span class="label">IoU Score</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">4-Channel</span>
+                        <span class="label">Multimodal Input</span>
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>Architecture Innovation:</strong> Engineered a 2D + 3D U-Net Ensemble. Applied soft voting (2D: 0.4 / 3D: 0.6) to effectively constrain 3D spatial over-segmentation.</li>
+                    <li><strong>Data Processing:</strong> Processed complex 4-channel MRI stacks (FLAIR, T1, T1ce, T2) to extract distinct tumor features.</li>
+                    <li><strong>Clinical Usability (End-to-End):</strong> Didn't stop at model metrics. Deployed a secure FastAPI backend rendering real-time 3D tumor overlays and multi-planar scrolling via NiiVue in the browser.</li>
+                </ul>
+                <div class="project-image-strip">
+                    <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-023-45524-7/MediaObjects/41598_2023_45524_Fig3_HTML.png" alt="Brain MRI Segmentation Results">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-footer">
+        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+    </div>
+</div>
+
+<!-- Slide 4: Project 2 - Pill ID (Showcase Layout) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">PILLY PILLY: Accessible Medication AI</h2>
+    <div class="content-area">
+        <div class="showcase-layout">
+            <div class="showcase-sidebar">
+                <i class="fa-solid fa-pills project-icon" style="color: #10b981;"></i>
+                <h3>Visual Pill Identification System</h3>
+                <p class="summary">A full-stack mobile application empowering visually impaired and elderly patients with safe medication identification and contraindication warnings.</p>
+                <div class="tech-tags">
+                    <span style="background-color: #d1fae5; color: #047857;">YOLOv8</span>
+                    <span style="background-color: #d1fae5; color: #047857;">Flutter</span>
+                    <span style="background-color: #d1fae5; color: #047857;">Google OCR</span>
+                </div>
+            </div>
+            <div class="showcase-main">
+                <div class="metric-cards">
+                    <div class="metric-card">
+                        <span class="value">92%</span>
+                        <span class="label">Top-20 Accuracy</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">11.4x</span>
+                        <span class="label">Accuracy Increase</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">3.82s</span>
+                        <span class="label">Inference Time</span>
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>Weighted Ensemble AI:</strong> Solved complex identification by fusing YOLOv8 classification (0.3), Color Similarity (0.3), and Google Vision OCR text matching (0.4).</li>
+                    <li><strong>Real-World Safety Integration:</strong> Linked inference results directly with real-time Drug Utilization Review (DUR) APIs to provide instant contraindication warnings.</li>
+                    <li><strong>Full-Stack Ownership:</strong> Developed the cross-platform frontend (Flutter iOS/Android), backend logic (FastAPI), and integrated Accessibility features (Chatbot &amp; TTS).</li>
+                </ul>
+                <div class="project-image-strip">
+                    <img src="https://carezone.com/img/medications.jpg" alt="Pill Identification Process" style="object-fit: cover; object-position: center;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-footer">
+        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+    </div>
+</div>
+
+<!-- Slide 5: Project 3 - Curexo (Showcase Layout) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">AI-Driven Gait Rehabilitation (Curexo)</h2>
+    <div class="content-area">
+        <div class="showcase-layout">
+            <div class="showcase-sidebar">
+                <i class="fa-solid fa-person-walking-with-cane project-icon" style="color: #f59e0b;"></i>
+                <h3>Patient-Customized Therapy Modeling</h3>
+                <p class="summary">Industry-Academia Project developing the 'Morning Walk Gait Transformer (MWGT)' for robotic rehabilitation.</p>
+                <div class="tech-tags">
+                    <span style="background-color: #fef3c7; color: #b45309;">Transformer</span>
+                    <span style="background-color: #fef3c7; color: #b45309;">Multimodal AI</span>
+                </div>
+            </div>
+            <div class="showcase-main">
+                <ul style="margin-top: 20px;">
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">Role: AI Model Developer &amp; Integration Lead</strong><br>
+                        Spearheading the core AI logic to translate raw patient data into actionable robotic therapy protocols.
+                    </li>
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">MWGT Architecture</strong><br>
+                        Developed a Transformer-based model that ingests continuous patient gait analytics and sensor data to dynamically generate optimized, patient-specific rehabilitation training profiles.
+                    </li>
+                    <li>
+                        <strong style="font-size: 20px;">Multimodal Interaction Expansion</strong><br>
+                        Currently leading phase 2: Integrating generative AI and computer vision to analyze facial expressions, thereby monitoring patient fatigue and emotional engagement in real-time during therapy sessions.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-footer">
+        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+    </div>
+</div>
+
+</body>
+</html>
+```
+
