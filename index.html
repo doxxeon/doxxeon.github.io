@@ -58,7 +58,7 @@
             gap: 20px;
             z-index: 10;
         }
-        
+
         .contact-footer a {
             color: #0284c7;
             text-decoration: none;
@@ -127,7 +127,7 @@
         }
 
         /* 3. LAYOUTS */
-        
+
         /* Title Slide */
         .title-layout {
             display: grid;
@@ -146,7 +146,7 @@
         }
 
         .title-layout .image-side {
-            background-image: url('https://images.unsplash.com/photo-1576091160550-2173ff9e5eb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80'); /* Modern abstract medical */
+            background-image: url('https://images.unsplash.com/photo-1758691462667-f2fb90a067ff?q=80&w=1400&auto=format&fit=crop'); /* Doctor reviewing a scan - healthcare accessibility */
             background-size: cover;
             background-position: center;
             position: relative;
@@ -189,7 +189,7 @@
             font-size: 16px;
             color: #64748b;
         }
-        
+
         .title-layout .contact-badge p:last-child { margin-bottom: 0; }
         .title-layout .contact-badge i { width: 20px; color: #0284c7; }
 
@@ -227,7 +227,7 @@
             padding-left: 30px;
             position: relative;
         }
-        
+
         .two-column li::before {
             content: "\f058"; /* FontAwesome Check Circle */
             font-family: "Font Awesome 6 Free";
@@ -259,6 +259,15 @@
             font-size: 40px;
             color: #0284c7;
             margin-bottom: 20px;
+        }
+
+        .showcase-sidebar .project-meta {
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
         }
 
         .showcase-sidebar h3 {
@@ -372,6 +381,60 @@
             font-weight: 600;
         }
 
+        /* More Projects / GitHub CTA Slide */
+        .more-projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+            margin-bottom: 30px;
+        }
+
+        .more-project-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #334155;
+            padding: 10px 14px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            line-height: 1.4;
+        }
+
+        .platform-tag {
+            flex-shrink: 0;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .platform-tag.dacon { background-color: #e0e7ff; color: #4338ca; }
+        .platform-tag.kaggle { background-color: #dbeafe; color: #1d4ed8; }
+        .platform-tag.aihub { background-color: #dcfce7; color: #15803d; }
+        .platform-tag.streamlit { background-color: #fee2e2; color: #b91c1c; }
+
+        .github-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .github-cta i {
+            font-size: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -382,7 +445,7 @@
         <div class="text-side">
             <h1>Dohyeon Kim</h1>
             <p class="subtitle">AI Researcher &amp; Engineer<br>Advancing Accessible Healthcare</p>
-            
+
             <p style="font-size: 18px; color: #475569; margin-bottom: 40px; max-width: 90%;">
                 Focusing on End-to-End, human-centered AI systems that bridge the gap in healthcare accessibility, from robust medical imaging to real-time interactive patient tools.
             </p>
@@ -425,7 +488,7 @@
             </div>
             <div>
                 <h3 style="font-size: 22px; margin-bottom: 20px; color: #0f172a;">Core Tech Stack</h3>
-                
+
                 <p style="margin-bottom: 5px; font-weight: 600; font-size: 16px;">AI &amp; Computer Vision</p>
                 <div class="tech-tags" style="margin-top: 0; margin-bottom: 20px;">
                     <span>PyTorch</span><span>TensorFlow</span><span>YOLOv8</span><span>3D U-Net</span><span>OpenCV</span>
@@ -448,13 +511,91 @@
     </div>
 </div>
 
-<!-- Slide 3: Project 1 - BraTS (Showcase Layout) -->
+<!-- Slide 3: Project - Curexo (Showcase Layout) -->
 <div class="slide-container" id="slide3">
+    <h2 class="slide-title">AI-Driven Gait Rehabilitation (Curexo)</h2>
+    <div class="content-area">
+        <div class="showcase-layout">
+            <div class="showcase-sidebar">
+                <i class="fa-solid fa-person-walking-with-cane project-icon" style="color: #f59e0b;"></i>
+                <p class="project-meta">2026–Present · Industry-Academia Project (Curexo Co., Ltd.)</p>
+                <h3>Patient-Customized AI Training via MWGT</h3>
+                <p class="summary">Developing the Morning Walk Gait Transformer (MWGT), a Transformer-based model that turns patient gait data into personalized robotic rehabilitation protocols.</p>
+                <div class="tech-tags">
+                    <span style="background-color: #fef3c7; color: #b45309;">Transformer</span>
+                    <span style="background-color: #fef3c7; color: #b45309;">Multimodal AI</span>
+                </div>
+            </div>
+            <div class="showcase-main">
+                <ul style="margin-top: 20px;">
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">Role: AI Model Developer</strong><br>
+                        Industry-Academia Project with Curexo Co., Ltd., translating raw patient data into actionable robotic therapy protocols.
+                    </li>
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">Objective 1 — Patient-Specific Training Protocols</strong><br>
+                        Spearheaded development of the MWGT model, ingesting continuous patient gait analytics and sensor data to dynamically generate optimized, patient-specific rehabilitation training profiles.
+                    </li>
+                    <li>
+                        <strong style="font-size: 20px;">Objective 2 — Multimodal Interaction (In Progress)</strong><br>
+                        Currently developing generative AI-based multimodal interaction functions, including facial expression recognition, to monitor patient fatigue and emotional engagement in real time during therapy sessions.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-footer">
+        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+    </div>
+</div>
+
+<!-- Slide 4: Project - Wellness Startup Integration Platform (Showcase Layout) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Wellness Startup Integration Platform</h2>
+    <div class="content-area">
+        <div class="showcase-layout">
+            <div class="showcase-sidebar">
+                <i class="fa-solid fa-lightbulb project-icon" style="color: #7c3aed;"></i>
+                <p class="project-meta">2026–Present · Capstone Design Project</p>
+                <h3>AI-Driven Startup Screening &amp; Proposal Platform</h3>
+                <p class="summary">An AI-driven platform connecting wellness startup idea screening to automated proposal generation.</p>
+                <div class="tech-tags">
+                    <span style="background-color: #ede9fe; color: #6d28d9;">FastAPI</span>
+                    <span style="background-color: #ede9fe; color: #6d28d9;">AI/LLM Pipeline</span>
+                    <span style="background-color: #ede9fe; color: #6d28d9;">Backend Architecture</span>
+                </div>
+            </div>
+            <div class="showcase-main">
+                <ul style="margin-top: 20px;">
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">Role: Backend &amp; AI Model Developer</strong><br>
+                        Building the core backend and AI pipeline for a platform that supports early-stage wellness startups.
+                    </li>
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">Idea Screening Pipeline</strong><br>
+                        Developing the backend logic that evaluates incoming wellness startup ideas against structured screening criteria.
+                    </li>
+                    <li>
+                        <strong style="font-size: 20px;">Automated Proposal Generation</strong><br>
+                        Connecting screening results to an AI-driven pipeline that generates structured startup proposals, streamlining the path from idea to pitch.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-footer">
+        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+    </div>
+</div>
+
+<!-- Slide 5: Project - BraTS (Showcase Layout) -->
+<div class="slide-container" id="slide5">
     <h2 class="slide-title">See the Tumor: 3D MRI Segmentation</h2>
     <div class="content-area">
         <div class="showcase-layout">
             <div class="showcase-sidebar">
                 <i class="fa-solid fa-brain project-icon"></i>
+                <p class="project-meta">May 2026 · Academic Project</p>
                 <h3>Brain Tumor Segmentation &amp; Web Viewer</h3>
                 <p class="summary">An end-to-end interactive platform for pixel-level tumor mask generation, engineered to prevent over-segmentation using ensemble logic.</p>
                 <div class="tech-tags">
@@ -464,7 +605,7 @@
             <div class="showcase-main">
                 <div class="metric-cards">
                     <div class="metric-card">
-                        <span class="value">0.8280</span>
+                        <span class="value">0.8423</span>
                         <span class="label">Val Dice Score</span>
                     </div>
                     <div class="metric-card">
@@ -482,7 +623,7 @@
                     <li><strong>Clinical Usability (End-to-End):</strong> Didn't stop at model metrics. Deployed a secure FastAPI backend rendering real-time 3D tumor overlays and multi-planar scrolling via NiiVue in the browser.</li>
                 </ul>
                 <div class="project-image-strip">
-                    <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-023-45524-7/MediaObjects/41598_2023_45524_Fig3_HTML.png" alt="Brain MRI Segmentation Results">
+                    <img src="https://images.unsplash.com/photo-1631563019676-dade0dbdb8fc?q=80&w=1200&auto=format&fit=crop" alt="Brain MRI Scan Imagery">
                 </div>
             </div>
         </div>
@@ -492,13 +633,53 @@
     </div>
 </div>
 
-<!-- Slide 4: Project 2 - Pill ID (Showcase Layout) -->
-<div class="slide-container" id="slide4">
+<!-- Slide 6: Project - Intelligent Road Safety Fault Detection Platform (Showcase Layout) -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Intelligent Road Safety Fault Detection</h2>
+    <div class="content-area">
+        <div class="showcase-layout">
+            <div class="showcase-sidebar">
+                <i class="fa-solid fa-road-circle-exclamation project-icon" style="color: #0d9488;"></i>
+                <p class="project-meta">Nov 2025 · Hackathon Project</p>
+                <h3>Real-Time Road Wear Monitoring</h3>
+                <p class="summary">A deep learning platform that turns dashcam and IMU sensor data into proactive, data-driven road maintenance insights.</p>
+                <div class="tech-tags">
+                    <span style="background-color: #ccfbf1; color: #0f766e;">TFLite</span>
+                    <span style="background-color: #ccfbf1; color: #0f766e;">Computer Vision</span>
+                    <span style="background-color: #ccfbf1; color: #0f766e;">Sensor Fusion</span>
+                </div>
+            </div>
+            <div class="showcase-main">
+                <ul style="margin-top: 20px;">
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">Role: Frontend Developer &amp; Model Optimizer</strong><br>
+                        Built the frontend and optimized on-device deep learning models for continuous road wear monitoring.
+                    </li>
+                    <li style="margin-bottom: 25px;">
+                        <strong style="font-size: 20px;">On-Device Model Optimization</strong><br>
+                        Optimized deep learning models with TFLite to run lightweight, continuous fault detection directly on vehicle hardware.
+                    </li>
+                    <li>
+                        <strong style="font-size: 20px;">Multi-Sensor Data Fusion</strong><br>
+                        Combined vehicle dashcam footage with IMU sensor data to detect road faults in real time, driving proactive, data-driven city maintenance.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-footer">
+        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+    </div>
+</div>
+
+<!-- Slide 7: Project - Pill ID (Showcase Layout) -->
+<div class="slide-container" id="slide7">
     <h2 class="slide-title">PILLY PILLY: Accessible Medication AI</h2>
     <div class="content-area">
         <div class="showcase-layout">
             <div class="showcase-sidebar">
                 <i class="fa-solid fa-pills project-icon" style="color: #10b981;"></i>
+                <p class="project-meta">2025 · Academic Project</p>
                 <h3>Visual Pill Identification System</h3>
                 <p class="summary">A full-stack mobile application empowering visually impaired and elderly patients with safe medication identification and contraindication warnings.</p>
                 <div class="tech-tags">
@@ -528,7 +709,7 @@
                     <li><strong>Full-Stack Ownership:</strong> Developed the cross-platform frontend (Flutter iOS/Android), backend logic (FastAPI), and integrated Accessibility features (Chatbot &amp; TTS).</li>
                 </ul>
                 <div class="project-image-strip">
-                    <img src="https://carezone.com/img/medications.jpg" alt="Pill Identification Process" style="object-fit: cover; object-position: center;">
+                    <img src="https://images.unsplash.com/photo-1573883429746-084be9b5cfca?q=80&w=1200&auto=format&fit=crop" alt="Medication Pills">
                 </div>
             </div>
         </div>
@@ -538,37 +719,27 @@
     </div>
 </div>
 
-<!-- Slide 5: Project 3 - Curexo (Showcase Layout) -->
-<div class="slide-container" id="slide5">
-    <h2 class="slide-title">AI-Driven Gait Rehabilitation (Curexo)</h2>
+<!-- Slide 8: More Projects & GitHub CTA -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">More Projects &amp; Competitions</h2>
     <div class="content-area">
-        <div class="showcase-layout">
-            <div class="showcase-sidebar">
-                <i class="fa-solid fa-person-walking-with-cane project-icon" style="color: #f59e0b;"></i>
-                <h3>Patient-Customized Therapy Modeling</h3>
-                <p class="summary">Industry-Academia Project developing the 'Morning Walk Gait Transformer (MWGT)' for robotic rehabilitation.</p>
-                <div class="tech-tags">
-                    <span style="background-color: #fef3c7; color: #b45309;">Transformer</span>
-                    <span style="background-color: #fef3c7; color: #b45309;">Multimodal AI</span>
-                </div>
-            </div>
-            <div class="showcase-main">
-                <ul style="margin-top: 20px;">
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">Role: AI Model Developer &amp; Integration Lead</strong><br>
-                        Spearheading the core AI logic to translate raw patient data into actionable robotic therapy protocols.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">MWGT Architecture</strong><br>
-                        Developed a Transformer-based model that ingests continuous patient gait analytics and sensor data to dynamically generate optimized, patient-specific rehabilitation training profiles.
-                    </li>
-                    <li>
-                        <strong style="font-size: 20px;">Multimodal Interaction Expansion</strong><br>
-                        Currently leading phase 2: Integrating generative AI and computer vision to analyze facial expressions, thereby monitoring patient fatigue and emotional engagement in real-time during therapy sessions.
-                    </li>
-                </ul>
-            </div>
+        <p style="margin-bottom: 20px; font-size: 17px;">
+            Beyond the featured work above, I've competed in <strong>9+ additional hackathons and competitions</strong> across Dacon, Kaggle, AI Hub, and Streamlit — all documented with code and results on GitHub.
+        </p>
+        <div class="more-projects-grid">
+            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Image Classification Hackathon: Identify the Icon Type</span></div>
+            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Malicious URL Classification AI Competition</span></div>
+            <div class="more-project-item"><span class="platform-tag kaggle">Kaggle</span><span>Titanic: Machine Learning from Disaster</span></div>
+            <div class="more-project-item"><span class="platform-tag kaggle">Kaggle</span><span>Bike Sharing Demand</span></div>
+            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Monthly Dacon: Artwork Painter Classification AI Competition</span></div>
+            <div class="more-project-item"><span class="platform-tag aihub">AI Hub</span><span>Pet Musculoskeletal Disease Diagnosis Imaging Data — YOLO</span></div>
+            <div class="more-project-item"><span class="platform-tag streamlit">Streamlit</span><span>Travel Destination Recommender &amp; Medical QA Chatbot</span></div>
+            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Boost Up AI 2025: Drug Discovery Competition</span></div>
+            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Thyroid Cancer Diagnosis Classification Hackathon</span></div>
         </div>
+        <a href="https://github.com/doxxeon" class="github-cta" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> View all repositories on GitHub — github.com/doxxeon
+        </a>
     </div>
     <div class="contact-footer">
         <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
@@ -577,5 +748,3 @@
 
 </body>
 </html>
-```
-
