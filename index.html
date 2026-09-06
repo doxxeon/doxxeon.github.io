@@ -1,878 +1,717 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dohyeon Kim - Medical AI Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        /* 1. THE SETUP - Modernized for Showcase */
-        * {
-            box-sizing: border-box;
-        }
-
-        p {
-            margin: 0;
-            margin-bottom: 15px;
-        }
-
-        body {
-            background-color: #e2e8f0; /* Slightly darker background to make slides pop */
-            display: grid;
-            gap: 50px; /* More space between slides */
-            grid-template-columns: 1fr;
-            margin: 0;
-            min-height: 100vh;
-            padding: 50px 20px;
-            place-items: center;
-            font-family: 'Inter', sans-serif; /* Cleaner, more modern font for screen viewing */
-            overflow-x: hidden;
-        }
-
-        /* Slide Container Setup — fluid width so it no longer forces horizontal
-           scrolling on laptops/tablets/phones narrower than 1280px */
-        .slide-container {
-            align-items: center;
-            background-color: #ffffff;
-            border-radius: 16px; /* Softer, modern corners */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            display: flex;
-            flex-direction: column;
-            min-height: 720px;
-            justify-content: center;
-            overflow: hidden;
-            padding: 60px;
-            position: relative;
-            width: 100%;
-            max-width: 1280px;
-        }
-
-        /* Sticky Contact Footer on every slide except title */
-        .contact-footer {
-            position: absolute;
-            bottom: 25px;
-            right: 40px;
-            font-size: 14px;
-            color: #64748b;
-            display: flex;
-            gap: 20px;
-            z-index: 10;
-        }
-
-        .contact-footer a {
-            color: #0284c7;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .slide-container > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* 2. TYPOGRAPHY */
-        .slide-container h1,
-        .slide-container h2 {
-            color: #0f172a;
-            font-family: 'Merriweather', serif; /* Keep Serif for headings for an academic touch */
-            margin: 0;
-        }
-
-        .slide-container h3 {
-            color: #0f172a;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-        }
-
-        .slide-container p,
-        .slide-container li {
-            color: #334155;
-        }
-
-        .slide-container h1 {
-            font-size: 56px; /* Slightly adjusted */
-            line-height: 1.2;
-            letter-spacing: -1px;
-        }
-
-        .slide-container .slide-title {
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            text-align: left;
-            width: 100%;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 15px;
-        }
-
-        .slide-container h3 {
-            font-size: 26px;
-            margin-bottom: 12px;
-            color: #0284c7;
-        }
-
-        .slide-container p,
-        .slide-container li {
-            font-size: 18px; /* Optimized for reading on iPad/Laptop */
-            line-height: 1.6;
-        }
-
-        .slide-container .content-area {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: center;
-            width: 100%;
-        }
-
-        /* 3. LAYOUTS */
-
-        /* Title Slide */
-        .title-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-        }
-
-        .title-layout .text-side {
-            padding: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #f8fafc;
-        }
-
-        .title-layout .image-side {
-            background-image: url('https://images.unsplash.com/photo-1758691462667-f2fb90a067ff?q=80&w=1400&auto=format&fit=crop'); /* Doctor reviewing a scan - healthcare accessibility */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .title-layout .image-side::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, #f8fafc 0%, rgba(248, 250, 252, 0) 100%);
-        }
-
-        .title-layout h1 {
-            color: #0f172a;
-            font-size: 60px;
-            margin-bottom: 20px;
-            z-index: 2;
-        }
-
-        .title-layout .subtitle {
-            color: #475569;
-            font-size: 24px;
-            font-weight: 300;
-            margin-bottom: 40px;
-            z-index: 2;
-        }
-
-        .title-layout .contact-badge {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 20px;
-            border-radius: 12px;
-            display: inline-block;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            z-index: 2;
-        }
-
-        .title-layout .contact-badge p {
-            margin-bottom: 5px;
-            font-size: 16px;
-            color: #64748b;
-        }
-
-        .title-layout .contact-badge p:last-child { margin-bottom: 0; }
-        .title-layout .contact-badge i { width: 20px; color: #0284c7; }
-
-        /* Two Column Image Right (About Me) */
-        .two-column {
-            align-items: center; /* Center align for better showcase flow */
-            display: grid;
-            grid-template-columns: 55% 40%;
-            gap: 5%;
-            width: 100%;
-        }
-
-        .image-wrapper {
-            border-radius: 12px;
-            height: 380px;
-            width: 100%;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .image-wrapper img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .two-column ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .two-column li {
-            margin-bottom: 25px;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .two-column li::before {
-            content: "\f058"; /* FontAwesome Check Circle */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #0ea5e9;
-        }
-
-        /* Showcase Split Layout (For Projects) */
-        .showcase-layout {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 50px;
-            height: 100%;
-        }
-
-        .showcase-sidebar {
-            background-color: #f8fafc;
-            border-radius: 12px;
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .showcase-sidebar .project-icon {
-            font-size: 40px;
-            color: #0284c7;
-            margin-bottom: 20px;
-        }
-
-        .showcase-sidebar .project-meta {
-            font-size: 13px;
-            font-weight: 700;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-
-        .showcase-sidebar h3 {
-            font-size: 28px;
-            line-height: 1.3;
-            margin-bottom: 15px;
-            color: #0f172a;
-        }
-
-        .showcase-sidebar p.summary {
-            font-size: 16px;
-            color: #475569;
-            font-style: italic;
-            border-left: 3px solid #cbd5e1;
-            padding-left: 15px;
-        }
-
-        .showcase-main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .metric-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .metric-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .metric-card .value {
-            display: block;
-            font-size: 28px;
-            font-weight: 700;
-            color: #0284c7;
-            margin-bottom: 5px;
-        }
-
-        .metric-card .label {
-            font-size: 14px;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .showcase-main ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .showcase-main li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 15px;
-            font-size: 17px;
-        }
-
-        .showcase-main li::before {
-            content: "•";
-            color: #0ea5e9;
-            font-weight: bold;
-            font-size: 24px;
-            position: absolute;
-            left: 0;
-            top: -4px;
-        }
-
-        .showcase-main li strong {
-            color: #0f172a;
-        }
-
-        .project-image-strip {
-            margin-top: 20px;
-            height: 180px;
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #f1f5f9;
-        }
-
-        .project-image-strip img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Tech Stack Tags */
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .tech-tags span {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /* More Projects / GitHub CTA Slide */
-        .more-projects-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px 24px;
-            margin-bottom: 30px;
-        }
-
-        .more-project-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            color: #334155;
-            padding: 10px 14px;
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            line-height: 1.4;
-        }
-
-        .platform-tag {
-            flex-shrink: 0;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 3px 9px;
-            border-radius: 20px;
-            letter-spacing: 0.3px;
-        }
-
-        .platform-tag.dacon { background-color: #e0e7ff; color: #4338ca; }
-        .platform-tag.kaggle { background-color: #dbeafe; color: #1d4ed8; }
-        .platform-tag.aihub { background-color: #dcfce7; color: #15803d; }
-        .platform-tag.streamlit { background-color: #fee2e2; color: #b91c1c; }
-
-        .github-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #0f172a;
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            width: fit-content;
-        }
-
-        .github-cta i {
-            font-size: 20px;
-        }
-
-        /* Side dot navigation — jump between slides + shows current position */
-        .dot-nav {
-            position: fixed;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            z-index: 100;
-        }
-
-        .dot-nav a {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #cbd5e1;
-            border: 2px solid #ffffff;
-            box-shadow: 0 0 0 1px #cbd5e1;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            display: block;
-        }
-
-        .dot-nav a:hover {
-            transform: scale(1.3);
-        }
-
-        .dot-nav a.active {
-            background-color: #0284c7;
-            box-shadow: 0 0 0 1px #0284c7;
-            transform: scale(1.3);
-        }
-
-        /* Repo link used on project cards that have a public GitHub repo */
-        .repo-link {
-            margin-top: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #0284c7;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            width: fit-content;
-        }
-
-        .repo-link:hover { text-decoration: underline; }
-
-        /* 4. RESPONSIVE — stack every two-column layout and scale typography
-           down for tablet/phone widths instead of forcing horizontal scroll */
-        @media (max-width: 960px) {
-            body { padding: 30px 16px; gap: 30px; }
-            .slide-container { padding: 32px; min-height: 0; }
-            .slide-container h1 { font-size: clamp(32px, 7vw, 56px); }
-            .slide-container .slide-title { font-size: clamp(26px, 5vw, 40px); margin-bottom: 24px; }
-            .slide-container h3 { font-size: clamp(20px, 4vw, 26px); }
-            .slide-container p, .slide-container li { font-size: 16px; }
-
-            .title-layout { grid-template-columns: 1fr; }
-            .title-layout .image-side { display: none; }
-            .title-layout .text-side { padding: 8px; background-color: transparent; }
-
-            .two-column { grid-template-columns: 1fr; gap: 30px; }
-            .image-wrapper { height: 220px; }
-
-            .showcase-layout { grid-template-columns: 1fr; gap: 24px; }
-            .showcase-sidebar { padding: 24px; }
-
-            .metric-cards { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-            .metric-card { padding: 12px; }
-            .metric-card .value { font-size: 20px; }
-            .metric-card .label { font-size: 11px; }
-
-            .more-projects-grid { grid-template-columns: 1fr; }
-
-            .contact-footer {
-                position: static;
-                margin-top: 24px;
-                justify-content: center;
-                flex-wrap: wrap;
-                text-align: center;
-            }
-
-            .dot-nav { display: none; }
-        }
-
-        @media (max-width: 480px) {
-            .metric-cards { grid-template-columns: 1fr; }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dohyeon Kim — Medical AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --pink:#ec4899;
+    --pink-deep:#db2777;
+    --pink-soft:#fbcfe8;
+    --pink-bg:#fdf2f8;
+    --ink:#18181b;
+    --gray:#6b7280;
+    --gray-light:#9ca3af;
+    --line:#eee5ea;
+    --bg:#ffffff;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans KR',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Noto Serif KR','Fraunces',serif;
+    margin:0;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  ::selection{background:var(--pink-soft);}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    background:rgba(255,255,255,0.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px;margin:0 auto;padding:0 32px;
+    height:68px;display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-logo{
+    font-family:'Fraunces',serif;font-weight:600;font-size:19px;
+    display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);
+  }
+  .nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);display:inline-block;}
+  nav.links{display:flex;gap:34px;}
+  nav.links a{
+    font-size:14.5px;font-weight:600;color:var(--gray);text-decoration:none;
+    position:relative;padding:4px 0;transition:color .2s ease;
+  }
+  nav.links a:hover{color:var(--pink-deep);}
+  nav.links a::after{
+    content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--pink);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;
+    font-size:13.5px;font-weight:700;text-decoration:none;
+  }
+  .nav-toggle{display:none;background:none;border:none;font-size:22px;color:var(--ink);cursor:pointer;}
+
+  @media (max-width:840px){
+    nav.links{
+      position:fixed;top:68px;left:0;right:0;background:#fff;
+      flex-direction:column;gap:0;border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;transition:max-height .3s ease;
+    }
+    nav.links.open{max-height:340px;}
+    nav.links a{padding:16px 32px;border-bottom:1px solid var(--line);width:100%;}
+    .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  section.hero{
+    position:relative;
+    padding:168px 0 110px;
+    overflow:hidden;
+  }
+  .hero-blob{
+    position:absolute;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle, var(--pink-soft) 0%, rgba(251,207,232,0) 70%);
+    top:-180px;right:-160px;filter:blur(10px);z-index:0;
+  }
+  .hero-inner{position:relative;z-index:1;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;letter-spacing:.4px;color:var(--pink-deep);
+    background:var(--pink-bg);border:1px solid var(--pink-soft);
+    padding:6px 14px;border-radius:999px;margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:clamp(24px,3.9vw,42px);
+    font-weight:600;line-height:1.4;letter-spacing:-.4px;
+    max-width:820px;
+  }
+  .hero h1 em{font-style:italic;color:var(--pink-deep);}
+  @media (max-width:500px){
+    .hero h1{font-size:clamp(21px,6.6vw,28px);}
+  }
+  .hero .role{
+    margin-top:22px;font-size:clamp(15.5px,1.9vw,17.5px);color:var(--gray);
+    max-width:600px;line-height:1.8;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 24px;border-radius:999px;font-weight:700;font-size:14.5px;
+    text-decoration:none;border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--pink);color:#fff;box-shadow:0 10px 24px rgba(236,72,153,.28);}
+  .btn-primary:hover{box-shadow:0 14px 30px rgba(236,72,153,.36);}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--pink-soft);}
+
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(4,auto);gap:44px;
+    margin-top:64px;padding-top:36px;border-top:1px solid var(--line);
+    max-width:760px;
+  }
+  .hero-stats .n{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--ink);}
+  .hero-stats .l{font-size:12px;color:var(--gray-light);font-weight:600;margin-top:2px;}
+
+  @media (max-width:640px){
+    .hero-stats{grid-template-columns:repeat(2,auto);row-gap:26px;}
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:96px 0;}
+  .section.alt{background:var(--pink-bg);}
+  .sec-head{margin-bottom:52px;}
+  .sec-kicker{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:14px;font-weight:600;
+    color:var(--pink-deep);margin-bottom:8px;display:block;
+  }
+  .sec-head h2{font-size:clamp(24px,3.4vw,32px);font-weight:600;letter-spacing:-.3px;}
+  .sec-head p{margin-top:12px;color:var(--gray);font-size:15px;max-width:560px;line-height:1.7;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;}
+  .about-bio p{color:#3f3f46;font-size:15.5px;line-height:1.9;margin-bottom:16px;}
+  .stack-group{margin-top:26px;}
+  .stack-group .cat{font-size:12px;font-weight:700;color:var(--gray-light);margin-bottom:9px;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .tags span{
+    background:#fff;border:1px solid var(--line);color:#3f3f46;
+    padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:600;
+  }
+
+  .timeline{border-left:2px solid var(--pink-soft);padding-left:26px;position:relative;}
+  .t-item{position:relative;margin-bottom:26px;}
+  .t-item:last-child{margin-bottom:0;}
+  .t-item::before{
+    content:'';position:absolute;left:-32.5px;top:5px;width:9px;height:9px;border-radius:50%;
+    background:var(--pink);border:2px solid #fff;box-shadow:0 0 0 2px var(--pink-soft);
+  }
+  .t-item .when{font-size:11.5px;font-weight:700;color:var(--pink-deep);}
+  .t-item h4{font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:700;margin:4px 0 3px;color:var(--ink);}
+  .t-item p{font-size:13.5px;color:var(--gray);line-height:1.6;}
+
+  @media (max-width:840px){
+    .about-grid{grid-template-columns:1fr;gap:48px;}
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .proj-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px;cursor:pointer;text-align:left;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    display:flex;flex-direction:column;height:100%;
+    font-family:'Noto Sans KR',sans-serif;
+  }
+  .proj-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 36px rgba(24,24,27,.08);
+    border-color:var(--pink-soft);
+  }
+  .proj-card .ic{
+    width:42px;height:42px;border-radius:13px;background:var(--pink-bg);color:var(--pink-deep);
+    display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:16px;
+  }
+  .proj-card .meta{font-size:11px;font-weight:700;color:var(--gray-light);margin-bottom:8px;}
+  .proj-card h3{font-family:'Noto Sans KR',sans-serif;font-size:17px;font-weight:700;line-height:1.4;margin-bottom:9px;}
+  .proj-card .sum{font-size:13.3px;color:var(--gray);line-height:1.65;flex-grow:1;}
+  .proj-card .foot{
+    margin-top:16px;display:flex;align-items:center;justify-content:space-between;
+    font-size:12.5px;font-weight:700;color:var(--pink-deep);
+  }
+  .proj-card .foot i{transition:transform .2s ease;}
+  .proj-card:hover .foot i{transform:translateX(4px);}
+
+  @media (max-width:900px){.proj-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:620px){.proj-grid{grid-template-columns:1fr;}}
+
+  /* more experiments (details/summary) */
+  .more-wrap{margin-top:40px;}
+  details.more{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 24px;
+  }
+  details.more summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;
+    font-weight:700;font-size:14px;color:var(--ink);gap:14px;
+  }
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary .chev{transition:transform .2s ease;color:var(--pink-deep);flex-shrink:0;}
+  details.more[open] summary .chev{transform:rotate(180deg);}
+  .more-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:20px;}
+  .more-list .mi{
+    display:flex;align-items:center;gap:10px;font-size:13px;color:#3f3f46;
+    padding:10px 12px;background:var(--pink-bg);border-radius:10px;
+  }
+  .mtag{
+    flex-shrink:0;font-size:9.5px;font-weight:800;text-transform:uppercase;
+    padding:3px 8px;border-radius:999px;letter-spacing:.3px;background:#fff;color:var(--pink-deep);
+  }
+  @media (max-width:620px){.more-list{grid-template-columns:1fr;}}
+
+  /* ---------- MODAL ---------- */
+  .overlay{
+    position:fixed;inset:0;background:rgba(24,24,27,.5);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+    z-index:500;opacity:0;pointer-events:none;transition:opacity .25s ease;
+  }
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .modal{
+    background:#fff;border-radius:22px;max-width:660px;width:100%;
+    max-height:86vh;overflow-y:auto;padding:40px;position:relative;
+    transform:translateY(16px) scale(.98);transition:transform .25s ease;
+    font-family:'Noto Sans KR',sans-serif;
+  }
+  .overlay.open .modal{transform:translateY(0) scale(1);}
+  .modal-close{
+    position:absolute;top:22px;right:22px;width:34px;height:34px;border-radius:50%;
+    background:var(--pink-bg);color:var(--pink-deep);border:none;font-size:15px;cursor:pointer;
+  }
+  .modal .ic{
+    width:46px;height:46px;border-radius:14px;background:var(--pink-bg);color:var(--pink-deep);
+    display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;
+  }
+  .modal .meta{font-size:11.5px;font-weight:700;color:var(--gray-light);margin-bottom:8px;}
+  .modal h3{font-family:'Noto Sans KR',sans-serif;font-size:21px;font-weight:700;margin-bottom:14px;line-height:1.4;}
+  .modal .tags{margin-bottom:20px;}
+  .modal .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px;}
+  .modal .metric{background:var(--pink-bg);border-radius:12px;padding:14px 8px;text-align:center;}
+  .modal .metric .v{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--pink-deep);}
+  .modal .metric .l{font-size:10px;color:var(--gray);font-weight:700;margin-top:3px;}
+  .modal ul{margin:0;padding:0;list-style:none;}
+  .modal li{position:relative;padding-left:20px;margin-bottom:13px;font-size:14px;line-height:1.7;color:#3f3f46;}
+  .modal li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--pink);}
+  .modal li strong{color:var(--ink);}
+  .modal .repo{
+    margin-top:22px;display:inline-flex;align-items:center;gap:8px;
+    color:var(--pink-deep);font-weight:700;font-size:13.5px;text-decoration:none;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .skill-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;}
+  .skill-card .cat{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .skill-card .cat i{color:var(--pink-deep);font-size:16px;}
+  .skill-card .cat span{font-weight:700;font-size:14px;}
+  @media (max-width:840px){.skill-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.skill-grid{grid-template-columns:1fr;}}
+
+  /* ---------- AWARDS ---------- */
+  .award-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .award{
+    display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+  }
+  .award .yr{
+    font-family:'Fraunces',serif;font-weight:600;font-size:15px;color:var(--pink-deep);flex-shrink:0;width:40px;
+  }
+  .award h4{font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px;}
+  .award p{font-size:12.5px;color:var(--gray);line-height:1.6;}
+  @media (max-width:700px){.award-list{grid-template-columns:1fr;}}
+
+  .schol-note{
+    margin-top:22px;font-size:13px;color:var(--gray);background:#fff;border:1px dashed var(--pink-soft);
+    padding:16px 20px;border-radius:14px;
+  }
+  .schol-note strong{color:var(--pink-deep);}
+
+  /* ---------- CONTACT ---------- */
+  footer.contact{
+    background:var(--ink);color:#fff;padding:90px 0 40px;text-align:center;
+  }
+  footer.contact h2{color:#fff;font-size:36px;font-weight:600;letter-spacing:-.3px;max-width:92%;margin:0 auto 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  footer.contact p.sub{color:#a1a1aa;font-size:15px;max-width:460px;margin:0 auto 36px;line-height:1.7;}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:64px;}
+  .contact-links a{
+    display:inline-flex;align-items:center;gap:9px;background:#27272a;color:#fff;
+    padding:12px 22px;border-radius:999px;text-decoration:none;font-size:13.5px;font-weight:600;
+    border:1px solid #3f3f46;transition:background .2s ease, border-color .2s ease;
+  }
+  .contact-links a:hover{background:var(--pink-deep);border-color:var(--pink-deep);}
+  footer.contact .fine{color:#71717a;font-size:12px;border-top:1px solid #27272a;padding-top:28px;}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+    transition-delay:var(--rd,0s);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+</style>
 </head>
 <body>
 
-<!-- Side navigation: jump directly to any slide, active dot tracks scroll position -->
-<nav class="dot-nav" aria-label="Slide navigation">
-    <a href="#slide1" title="Title"></a>
-    <a href="#slide2" title="Foundation & Expertise"></a>
-    <a href="#slide3" title="AI-Driven Gait Rehabilitation"></a>
-    <a href="#slide4" title="Wellness Startup Platform"></a>
-    <a href="#slide5" title="See the Tumor"></a>
-    <a href="#slide6" title="Road Safety Fault Detection"></a>
-    <a href="#slide7" title="PILLY PILLY"></a>
-    <a href="#slide8" title="More Projects & GitHub"></a>
-</nav>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo"><span class="dot"></span>Dohyeon Kim</a>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="mailto:doxxeon@gmail.com" class="nav-cta">연락하기</a>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
 
-<!-- Slide 1: Title & Contact (Showcase Cover) -->
-<div class="slide-container" style="padding: 0;" id="slide1">
-    <div class="title-layout">
-        <div class="text-side">
-            <h1>Dohyeon Kim</h1>
-            <p class="subtitle">AI Researcher &amp; Engineer<br>Advancing Accessible Healthcare</p>
+<section class="hero" id="top">
+  <div class="hero-blob"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow"><i class="fa-solid fa-heart-pulse"></i> Medical AI · Healthcare Engineering</span>
+    <h1>의료 영상과 데이터를 다루는 걸 좋아하는,<br><em>AI 엔지니어</em> 김도현입니다.</h1>
+    <p class="role">상명대학교 휴먼AI공학과에서 공부하며 재활로봇, 의료 영상 분석 같은 프로젝트를 진행하고 있습니다. 모델 설계부터 배포까지 직접 해보는 걸 좋아합니다.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-diagram-project"></i> 프로젝트 보기</a>
+      <a href="mailto:doxxeon@gmail.com" class="btn btn-ghost"><i class="fa-regular fa-envelope"></i> 연락하기</a>
+      <a href="https://github.com/doxxeon" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-github"></i> GitHub</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="n">7</div><div class="l">Projects</div></div>
+      <div><div class="n">6</div><div class="l">Awards</div></div>
+      <div><div class="n">9+</div><div class="l">Competitions</div></div>
+      <div><div class="n">3.56</div><div class="l">Major GPA / 4.5</div></div>
+    </div>
+  </div>
+</section>
 
-            <p style="font-size: 18px; color: #475569; margin-bottom: 40px; max-width: 90%;">
-                Focusing on End-to-End, human-centered AI systems that bridge the gap in healthcare accessibility, from robust medical imaging to real-time interactive patient tools.
-            </p>
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">About</span>
+      <h2>Introducing</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-bio reveal">
+        <p>의료 영상 데이터를 다루는 딥러닝 모델을 만드는 데 관심이 많습니다. 특히 MRI reconstruction, segmentation, 그리고 여러 모달리티를 함께 쓰는 진단 지원 쪽을 주로 보고 있습니다.</p>
+        <p>상명대학교에서 휴먼AI공학을 전공하면서, 자기설계융합전공으로 직접 만든 '바이오의공학'을 복수전공하고 있습니다. 전공을 설계하면서 지도교수님과 함께 '의료 인공지능'이라는 자기설계 교과목도 개설해 이수했는데, 여기서부터 의료 영상 쪽에 대한 관심이 본격적으로 시작됐습니다. BraTS 데이터셋으로 뇌종양을 분할해보고, 재활로봇의 센서 데이터로 보행 훈련 프로토콜을 만들어보는 식으로 관련 프로젝트를 이어오고 있습니다.</p>
+        <p>성능만 좋은 모델보다는, 실제로 병원 현장에서 쓸 수 있는 형태로 만드는 데 더 관심이 갑니다.</p>
 
-            <div class="contact-badge">
-                <p><i class="fa-solid fa-envelope"></i> doxxeon@gmail.com</p>
-                <p><i class="fa-brands fa-github"></i> github.com/doxxeon</p>
-                <p><i class="fa-solid fa-graduation-cap"></i> Sangmyung Univ. Dept. of Human AI</p>
-            </div>
+        <div class="stack-group">
+          <div class="cat">AI · Computer Vision</div>
+          <div class="tags"><span>PyTorch</span><span>TensorFlow</span><span>YOLOv8</span><span>2D/3D U-Net</span><span>OpenCV</span><span>Mediapipe</span></div>
+          <div class="cat">Backend · Deployment</div>
+          <div class="tags"><span>FastAPI</span><span>Flask</span><span>Docker</span><span>TFLite / CoreML</span></div>
+          <div class="cat">Frontend · Data</div>
+          <div class="tags"><span>Flutter</span><span>MongoDB</span><span>SQLite</span><span>MySQL</span></div>
         </div>
-        <div class="image-side"></div>
-    </div>
-</div>
+      </div>
 
-<!-- Slide 2: Academic & Technical Foundation -->
-<div class="slide-container" id="slide2">
-    <h2 class="slide-title">Foundation &amp; Expertise</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li>
-                        <strong>Sangmyung University</strong><br>
-                        Major: Human AI Engineering | Minors: Bio-medical Eng. &amp; Bio-health Device. <br>
-                        <em>Relevant Coursework: Biomedical Informatics (A+), Deep Learning, Healthcare Algorithms (A).</em>
-                    </li>
-                    <li>
-                        <strong>Biomedical AI Training (Konyang Univ. Hospital)</strong><br>
-                        Hands-on clinical AI training including Medical Image Analysis, EMR systems, and K-MIMIC-III database utilization.
-                    </li>
-                    <li>
-                        <strong>Global Research Trajectory</strong><br>
-                        Selected for the Bio-health Frontier Project (Boston, Martinos Center Hackathon Participant).
-                    </li>
-                    <li>
-                        <strong>Key Recognitions</strong><br>
-                        Comprehensive Excellence Award (Konyang), Popularity Award (Seoul AI Hackathon), Grand Prize (Tech Hackathon for the Disabled).
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3 style="font-size: 22px; margin-bottom: 20px; color: #0f172a;">Core Tech Stack</h3>
-
-                <p style="margin-bottom: 5px; font-weight: 600; font-size: 16px;">AI &amp; Computer Vision</p>
-                <div class="tech-tags" style="margin-top: 0; margin-bottom: 20px;">
-                    <span>PyTorch</span><span>TensorFlow</span><span>YOLOv8</span><span>3D U-Net</span><span>OpenCV</span>
-                </div>
-
-                <p style="margin-bottom: 5px; font-weight: 600; font-size: 16px;">Backend &amp; Deployment</p>
-                <div class="tech-tags" style="margin-top: 0; margin-bottom: 20px;">
-                    <span>FastAPI</span><span>Flask</span><span>Docker</span><span>TFLite/CoreML</span>
-                </div>
-
-                <p style="margin-bottom: 5px; font-weight: 600; font-size: 16px;">Frontend &amp; DB</p>
-                <div class="tech-tags" style="margin-top: 0;">
-                    <span>Flutter (iOS/Android)</span><span>MongoDB</span><span>SQLite</span>
-                </div>
-            </div>
+      <div class="timeline">
+        <div class="t-item reveal" style="--rd:.05s">
+          <div class="when">2026.03 – 현재</div>
+          <h4>Undergraduate Research Assistant</h4>
+          <p>지능정보기술연구소에서 Dong-keun Kim 교수님 지도로 의료 영상 분석 관련 딥러닝 연구를 하고 있습니다.</p>
         </div>
-    </div>
-    <div class="contact-footer">
-        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
-    </div>
-</div>
-
-<!-- Slide 3: Project - Curexo (Showcase Layout) -->
-<div class="slide-container" id="slide3">
-    <h2 class="slide-title">AI-Driven Gait Rehabilitation (Curexo)</h2>
-    <div class="content-area">
-        <div class="showcase-layout">
-            <div class="showcase-sidebar">
-                <i class="fa-solid fa-person-walking-with-cane project-icon" style="color: #f59e0b;"></i>
-                <p class="project-meta">2026–Present · Industry-Academia Project (Curexo Co., Ltd.)</p>
-                <h3>Patient-Customized AI Training via MWGT</h3>
-                <p class="summary">Developing the Morning Walk Gait Transformer (MWGT), a Transformer-based model that turns patient gait data into personalized robotic rehabilitation protocols.</p>
-                <div class="tech-tags">
-                    <span style="background-color: #fef3c7; color: #b45309;">Transformer</span>
-                    <span style="background-color: #fef3c7; color: #b45309;">Multimodal AI</span>
-                </div>
-            </div>
-            <div class="showcase-main">
-                <ul style="margin-top: 20px;">
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">Role: AI Model Developer</strong><br>
-                        Industry-Academia Project with Curexo Co., Ltd., translating raw patient data into actionable robotic therapy protocols.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">Objective 1 — Patient-Specific Training Protocols</strong><br>
-                        Spearheaded development of the MWGT model, ingesting continuous patient gait analytics and sensor data to dynamically generate optimized, patient-specific rehabilitation training profiles.
-                    </li>
-                    <li>
-                        <strong style="font-size: 20px;">Objective 2 — Multimodal Interaction (In Progress)</strong><br>
-                        Currently developing generative AI-based multimodal interaction functions, including facial expression recognition, to monitor patient fatigue and emotional engagement in real time during therapy sessions.
-                    </li>
-                </ul>
-            </div>
+        <div class="t-item reveal" style="--rd:.1s">
+          <div class="when">2026.05 – 2026.08</div>
+          <h4>Bioengineer Trainee</h4>
+          <p>BioHealth Frontier Fostering Project에 참여했고, 보스턴 Martinos Center 현지 해커톤에 선발되어 다녀왔습니다.</p>
         </div>
-    </div>
-    <div class="contact-footer">
-        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
-    </div>
-</div>
-
-<!-- Slide 4: Project - Wellness Startup Integration Platform (Showcase Layout) -->
-<div class="slide-container" id="slide4">
-    <h2 class="slide-title">Wellness Startup Integration Platform</h2>
-    <div class="content-area">
-        <div class="showcase-layout">
-            <div class="showcase-sidebar">
-                <i class="fa-solid fa-lightbulb project-icon" style="color: #7c3aed;"></i>
-                <p class="project-meta">2026–Present · Capstone Design Project</p>
-                <h3>AI-Driven Startup Screening &amp; Proposal Platform</h3>
-                <p class="summary">An AI-driven platform connecting wellness startup idea screening to automated proposal generation.</p>
-                <div class="tech-tags">
-                    <span style="background-color: #ede9fe; color: #6d28d9;">FastAPI</span>
-                    <span style="background-color: #ede9fe; color: #6d28d9;">AI/LLM Pipeline</span>
-                    <span style="background-color: #ede9fe; color: #6d28d9;">Backend Architecture</span>
-                </div>
-            </div>
-            <div class="showcase-main">
-                <ul style="margin-top: 20px;">
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">Role: Backend &amp; AI Model Developer</strong><br>
-                        Building the core backend and AI pipeline for a platform that supports early-stage wellness startups.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">Idea Screening Pipeline</strong><br>
-                        Developing the backend logic that evaluates incoming wellness startup ideas against structured screening criteria.
-                    </li>
-                    <li>
-                        <strong style="font-size: 20px;">Automated Proposal Generation</strong><br>
-                        Connecting screening results to an AI-driven pipeline that generates structured startup proposals, streamlining the path from idea to pitch.
-                    </li>
-                </ul>
-            </div>
+        <div class="t-item reveal" style="--rd:.15s">
+          <div class="when">2025.02 – 2025.09</div>
+          <h4>Biomedical AI Trainee</h4>
+          <p>건양대학교병원에서 의료 영상 분석, EMR, K-MIMIC-III 데이터베이스를 실습했습니다. 우수상 · 종합 우수상 수상.</p>
         </div>
-    </div>
-    <div class="contact-footer">
-        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
-    </div>
-</div>
-
-<!-- Slide 5: Project - BraTS (Showcase Layout) -->
-<div class="slide-container" id="slide5">
-    <h2 class="slide-title">See the Tumor: 3D MRI Segmentation</h2>
-    <div class="content-area">
-        <div class="showcase-layout">
-            <div class="showcase-sidebar">
-                <i class="fa-solid fa-brain project-icon"></i>
-                <p class="project-meta">May 2026 · Academic Project</p>
-                <h3>Brain Tumor Segmentation &amp; Web Viewer</h3>
-                <p class="summary">An end-to-end interactive platform for pixel-level tumor mask generation, engineered to prevent over-segmentation using ensemble logic.</p>
-                <div class="tech-tags">
-                    <span>2D/3D U-Net</span><span>FastAPI</span><span>NiiVue</span><span>BraTS 2021</span>
-                </div>
-            </div>
-            <div class="showcase-main">
-                <div class="metric-cards">
-                    <div class="metric-card">
-                        <span class="value">0.8423</span>
-                        <span class="label">Val Dice Score</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="value">0.717</span>
-                        <span class="label">IoU Score</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="value">4-Channel</span>
-                        <span class="label">Multimodal Input</span>
-                    </div>
-                </div>
-                <ul>
-                    <li><strong>Architecture Innovation:</strong> Engineered a 2D + 3D U-Net Ensemble. Applied soft voting (2D: 0.4 / 3D: 0.6) to effectively constrain 3D spatial over-segmentation.</li>
-                    <li><strong>Data Processing:</strong> Processed complex 4-channel MRI stacks (FLAIR, T1, T1ce, T2) to extract distinct tumor features.</li>
-                    <li><strong>Clinical Usability (End-to-End):</strong> Didn't stop at model metrics. Deployed a secure FastAPI backend rendering real-time 3D tumor overlays and multi-planar scrolling via NiiVue in the browser.</li>
-                </ul>
-                <div class="project-image-strip">
-                    <img src="https://images.unsplash.com/photo-1631563019676-dade0dbdb8fc?q=80&w=1200&auto=format&fit=crop" alt="Brain MRI Scan Imagery">
-                </div>
-            </div>
+        <div class="t-item reveal" style="--rd:.2s">
+          <div class="when">2023.08 – 2023.09</div>
+          <h4>AI Trainee, LG Aimers 3기</h4>
+          <p>실전 문제 해결 중심의 AI 교육 프로그램을 수료했습니다.</p>
         </div>
-    </div>
-    <div class="contact-footer">
-        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
-    </div>
-</div>
-
-<!-- Slide 6: Project - Intelligent Road Safety Fault Detection Platform (Showcase Layout) -->
-<div class="slide-container" id="slide6">
-    <h2 class="slide-title">Intelligent Road Safety Fault Detection</h2>
-    <div class="content-area">
-        <div class="showcase-layout">
-            <div class="showcase-sidebar">
-                <i class="fa-solid fa-road-circle-exclamation project-icon" style="color: #0d9488;"></i>
-                <p class="project-meta">Nov 2025 · Hackathon Project</p>
-                <h3>Real-Time Road Wear Monitoring</h3>
-                <p class="summary">A deep learning platform that turns dashcam and IMU sensor data into proactive, data-driven road maintenance insights.</p>
-                <div class="tech-tags">
-                    <span style="background-color: #ccfbf1; color: #0f766e;">TFLite</span>
-                    <span style="background-color: #ccfbf1; color: #0f766e;">Computer Vision</span>
-                    <span style="background-color: #ccfbf1; color: #0f766e;">Sensor Fusion</span>
-                </div>
-            </div>
-            <div class="showcase-main">
-                <ul style="margin-top: 20px;">
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">Role: Frontend Developer &amp; Model Optimizer</strong><br>
-                        Built the frontend and optimized on-device deep learning models for continuous road wear monitoring.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="font-size: 20px;">On-Device Model Optimization</strong><br>
-                        Optimized deep learning models with TFLite to run lightweight, continuous fault detection directly on vehicle hardware.
-                    </li>
-                    <li>
-                        <strong style="font-size: 20px;">Multi-Sensor Data Fusion</strong><br>
-                        Combined vehicle dashcam footage with IMU sensor data to detect road faults in real time, driving proactive, data-driven city maintenance.
-                    </li>
-                </ul>
-            </div>
+        <div class="t-item reveal" style="--rd:.25s">
+          <div class="when">2022 – 현재</div>
+          <h4>B.S. Human AI Engineering, 상명대학교</h4>
+          <p>자기설계융합전공으로 '바이오의공학'을 직접 설계해 복수전공 · 바이오헬스디바이스 부전공. GPA 3.56/4.5 (전공 3.59/4.5).</p>
         </div>
+      </div>
     </div>
-    <div class="contact-footer">
-        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
-    </div>
-</div>
+  </div>
+</section>
 
-<!-- Slide 7: Project - Pill ID (Showcase Layout) -->
-<div class="slide-container" id="slide7">
-    <h2 class="slide-title">PILLY PILLY: Accessible Medication AI</h2>
-    <div class="content-area">
-        <div class="showcase-layout">
-            <div class="showcase-sidebar">
-                <i class="fa-solid fa-pills project-icon" style="color: #10b981;"></i>
-                <p class="project-meta">2025 · Academic Project</p>
-                <h3>Visual Pill Identification System</h3>
-                <p class="summary">A full-stack mobile application empowering visually impaired and elderly patients with safe medication identification and contraindication warnings.</p>
-                <div class="tech-tags">
-                    <span style="background-color: #d1fae5; color: #047857;">YOLOv8</span>
-                    <span style="background-color: #d1fae5; color: #047857;">Flutter</span>
-                    <span style="background-color: #d1fae5; color: #047857;">Google OCR</span>
-                </div>
-                <a href="https://github.com/baekgangmin/pilly-pilly" class="repo-link" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-github"></i> View Repository
-                </a>
-            </div>
-            <div class="showcase-main">
-                <div class="metric-cards">
-                    <div class="metric-card">
-                        <span class="value">92%</span>
-                        <span class="label">Top-20 Accuracy</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="value">11.4x</span>
-                        <span class="label">Accuracy Increase</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="value">3.82s</span>
-                        <span class="label">Inference Time</span>
-                    </div>
-                </div>
-                <ul>
-                    <li><strong>Weighted Ensemble AI:</strong> Solved complex identification by fusing YOLOv8 classification (0.3), Color Similarity (0.3), and Google Vision OCR text matching (0.4).</li>
-                    <li><strong>Real-World Safety Integration:</strong> Linked inference results directly with real-time Drug Utilization Review (DUR) APIs to provide instant contraindication warnings.</li>
-                    <li><strong>Full-Stack Ownership:</strong> Developed the cross-platform frontend (Flutter iOS/Android), backend logic (FastAPI), and integrated Accessibility features (Chatbot &amp; TTS).</li>
-                </ul>
-                <div class="project-image-strip">
-                    <img src="https://images.unsplash.com/photo-1573883429746-084be9b5cfca?q=80&w=1200&auto=format&fit=crop" alt="Medication Pills">
-                </div>
-            </div>
-        </div>
+<section class="section alt" id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Projects</span>
+      <p>카드를 클릭하면 자세한 내용을 볼 수 있어요.</p>
     </div>
-    <div class="contact-footer">
-        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
-    </div>
-</div>
+    <div class="proj-grid" id="projGrid"></div>
 
-<!-- Slide 8: More Projects & GitHub CTA -->
-<div class="slide-container" id="slide8">
-    <h2 class="slide-title">More Projects &amp; Competitions</h2>
-    <div class="content-area">
-        <p style="margin-bottom: 20px; font-size: 17px;">
-            Beyond the featured work above, I've competed in <strong>9+ additional hackathons and competitions</strong> across Dacon, Kaggle, AI Hub, and Streamlit — all documented with code and results on GitHub.
-        </p>
-        <div class="more-projects-grid">
-            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Image Classification Hackathon: Identify the Icon Type</span></div>
-            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Malicious URL Classification AI Competition</span></div>
-            <div class="more-project-item"><span class="platform-tag kaggle">Kaggle</span><span>Titanic: Machine Learning from Disaster</span></div>
-            <div class="more-project-item"><span class="platform-tag kaggle">Kaggle</span><span>Bike Sharing Demand</span></div>
-            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Monthly Dacon: Artwork Painter Classification AI Competition</span></div>
-            <div class="more-project-item"><span class="platform-tag aihub">AI Hub</span><span>Pet Musculoskeletal Disease Diagnosis Imaging Data — YOLO</span></div>
-            <div class="more-project-item"><span class="platform-tag streamlit">Streamlit</span><span>Travel Destination Recommender &amp; Medical QA Chatbot</span></div>
-            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Boost Up AI 2025: Drug Discovery Competition</span></div>
-            <div class="more-project-item"><span class="platform-tag dacon">Dacon</span><span>Thyroid Cancer Diagnosis Classification Hackathon</span></div>
+    <div class="more-wrap reveal">
+      <details class="more">
+        <summary>그 외 9개 이상의 해커톤 · 공모전 참가 이력 <span class="chev"><i class="fa-solid fa-chevron-down"></i></span></summary>
+        <div class="more-list">
+          <div class="mi"><span class="mtag">Hackathon</span>Closed-loop TMS 윈도우 Sweet Spot 탐색</div>
+          <div class="mi"><span class="mtag">Dacon</span>이미지 분류: 아이콘 타입 식별</div>
+          <div class="mi"><span class="mtag">Dacon</span>악성 URL 분류 AI 경진대회</div>
+          <div class="mi"><span class="mtag">Kaggle</span>타이타닉 생존자 예측</div>
+          <div class="mi"><span class="mtag">Kaggle</span>자전거 대여 수요 예측</div>
+          <div class="mi"><span class="mtag">Dacon</span>화가 분류 AI 경진대회</div>
+          <div class="mi"><span class="mtag">AI Hub</span>반려동물 근골격계 질환 진단 — YOLO</div>
+          <div class="mi"><span class="mtag">Streamlit</span>여행지 추천 &amp; 의료 QA 챗봇</div>
+          <div class="mi"><span class="mtag">Dacon</span>Boost Up AI 2025: 신약 발굴 경진대회</div>
+          <div class="mi"><span class="mtag">Dacon</span>갑상선암 진단 분류 해커톤</div>
         </div>
-        <a href="https://github.com/doxxeon" class="github-cta" target="_blank" rel="noopener">
-            <i class="fa-brands fa-github"></i> View all repositories on GitHub — github.com/doxxeon
-        </a>
+      </details>
     </div>
-    <div class="contact-footer">
-        <span>doxxeon@gmail.com</span> | <span>github.com/doxxeon</span>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Skills</span>
     </div>
+    <div class="skill-grid">
+      <div class="skill-card reveal" style="--rd:.02s">
+        <div class="cat"><i class="fa-solid fa-code"></i><span>Languages</span></div>
+        <div class="tags"><span>Python</span><span>Dart</span><span>C</span><span>R</span><span>HTML/CSS/JS</span></div>
+      </div>
+      <div class="skill-card reveal" style="--rd:.06s">
+        <div class="cat"><i class="fa-solid fa-brain"></i><span>AI / ML</span></div>
+        <div class="tags"><span>OpenCV</span><span>YOLO</span><span>Mediapipe</span><span>Scikit-learn</span><span>TensorFlow</span><span>PyTorch</span><span>TFLite/CoreML</span></div>
+      </div>
+      <div class="skill-card reveal" style="--rd:.1s">
+        <div class="cat"><i class="fa-solid fa-server"></i><span>Backend</span></div>
+        <div class="tags"><span>FastAPI</span><span>Flask</span><span>MySQL</span><span>SQLite</span><span>MongoDB</span></div>
+      </div>
+      <div class="skill-card reveal" style="--rd:.14s">
+        <div class="cat"><i class="fa-solid fa-mobile-screen"></i><span>Frontend</span></div>
+        <div class="tags"><span>Flutter (iOS/Android)</span><span>Android Studio</span></div>
+      </div>
+      <div class="skill-card reveal" style="--rd:.18s">
+        <div class="cat"><i class="fa-solid fa-toolbox"></i><span>Tools</span></div>
+        <div class="tags"><span>Git/GitHub</span><span>Jira/Confluence</span><span>Docker</span><span>Figma</span><span>RESTful APIs</span></div>
+      </div>
+      <div class="skill-card reveal" style="--rd:.22s">
+        <div class="cat"><i class="fa-solid fa-certificate"></i><span>Certifications</span></div>
+        <div class="tags"><span>정보처리기사 (필기)</span><span>ADsP</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="awards">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Awards</span>
+      <h2>수상 및 활동</h2>
+    </div>
+    <div class="award-list">
+      <div class="award reveal" style="--rd:.02s"><div class="yr">'25</div><div><h4>디지털 포용 우수상 — 이사장상</h4><p>장애인분야 해커톤 대회, 한국장애인재단 (PILLY PILLY)</p></div></div>
+      <div class="award reveal" style="--rd:.06s"><div class="yr">'25</div><div><h4>인기상 — 이사장상</h4><p>2025 서울 AI 해커톤, 서울AI재단/AWS (도로 안전 감지 플랫폼)</p></div></div>
+      <div class="award reveal" style="--rd:.1s"><div class="yr">'23</div><div><h4>장려상</h4><p>제2회 SM@COSSTHON, 상명대학교 바이오헬스센터 (안면마비 재활 앱)</p></div></div>
+      <div class="award reveal" style="--rd:.14s"><div class="yr">'23</div><div><h4>대상</h4><p>관학협력 스마트시티 실험실, 종로구청 (ICT 융합 전동휠체어)</p></div></div>
+      <div class="award reveal" style="--rd:.18s"><div class="yr">'23</div><div><h4>우수 홍보 콘텐츠상</h4><p>식품의약품안전처 적극행정 모니터링단</p></div></div>
+      <div class="award reveal" style="--rd:.22s"><div class="yr">'23</div><div><h4>우수 활동가상</h4><p>식품의약품안전처 적극행정 모니터링단</p></div></div>
+    </div>
+    <div class="schol-note reveal"><strong>성적 · 리더십 장학금 6회</strong> 수혜 (2022–2026) — 리더십 장학금, 제후장학금, 대학혁신지원 장학금 등.</div>
+  </div>
+</section>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="reveal">언제든 편하게 연락주세요, 기다리고 있겠습니다.</h2>
+    <p class="sub reveal" style="--rd:.05s">연구 협업이나 인턴십, 그냥 이야기하고 싶은 것도 좋습니다.</p>
+    <div class="contact-links reveal" style="--rd:.1s">
+      <a href="mailto:doxxeon@gmail.com"><i class="fa-regular fa-envelope"></i> doxxeon@gmail.com</a>
+      <a href="https://github.com/doxxeon" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://velog.io/@doxxeon/posts" target="_blank" rel="noopener"><i class="fa-solid fa-pen-nib"></i> Velog</a>
+      <a href="https://humorous-tomato-853.notion.site/Kimdohyeon-s-Workspace-2f983f4733f180169c17d063bd407e44" target="_blank" rel="noopener"><i class="fa-solid fa-table-columns"></i> Notion</a>
+    </div>
+    <div class="fine">© 2026 Dohyeon Kim</div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
 </div>
 
 <script>
-    // Highlight the dot-nav entry matching whichever slide is currently in view.
-    const dots = document.querySelectorAll('.dot-nav a');
-    const slides = document.querySelectorAll('.slide-container');
+const projects = [
+  {
+    icon: 'fa-solid fa-lungs',
+    meta: '2026.07 · MIT Martinos Center 현지 해커톤 · Team 4',
+    title: 'Expected Label Value (ELV) 알고리즘 개선',
+    summary: '학습 없이 여러 atlas로 segmentation을 만드는 ELV 알고리즘을 흉부 X-ray 데이터셋에 확장 적용하고 개선했습니다.',
+    tags: ['ELV', 'Medical Image Segmentation', 'MATLAB'],
+    metrics: [ ['0.8971','학습셋 Mean Dice (α=1)'], ['p=8×10⁻⁴','통계적 유의성'], ['8/10','테스트셋 개선 subject'] ],
+    bullets: [
+      '<strong>배경:</strong> ELV는 라벨이 있는 여러 atlas 이미지를 새 이미지에 정합해 확률 맵을 만드는, 학습 과정이 필요 없는 segmentation 방법입니다. 뇌간(IBSR) 데이터셋으로 원리를 먼저 익힌 뒤, 현지 해커톤에서 Montgomery 흉부 X-ray 데이터셋(폐 segmentation)으로 확장 적용했습니다.',
+      '<strong>Label Variant Ensemble:</strong> 원본 라벨에 침식·팽창 variant를 추가해 조합해봤지만, 원본 대비 유의미한 개선은 없었습니다 (Mean Dice 0.9038 → 0.9015).',
+      '<strong>Feedback-based Label Correction:</strong> 예측 오차를 반영해 라벨을 보정하는 corrL 기법을 적용하니, 학습셋 Mean Dice가 0.8529 → 0.8971로 유의미하게 개선됐습니다 (p=8.0×10⁻⁴).'
+    ],
+    note: 'Team 4 — Yeoeun Kim, Dohyeon Kim. MIT Martinos Center 연구진과 함께 진행했습니다.<br>원논문: I. Aganj and B. Fischl, "Multi-Atlas Image Soft Segmentation via Computation of the Expected Label Value," IEEE Transactions on Medical Imaging, vol. 40, no. 6, pp. 1702–1710, June 2021. doi: 10.1109/TMI.2021.3064661.'
+  },
+  {
+    icon: 'fa-solid fa-person-walking-with-cane',
+    meta: '2026 – 현재 · 산학협력 프로젝트 (㈜큐렉소) · Track 1 & 2',
+    title: 'AI 기반 보행 재활로봇 (MWGT)',
+    summary: '재활로봇 Morning Walk를 위한 환자 맞춤형 AI 훈련과 멀티모달 센싱을 개발하고 있습니다.',
+    tags: ['Transformer', 'Multimodal AI', 'Computer Vision'],
+    bullets: [
+      '<strong>팀 구성:</strong> 파라미터 추천(Track 1)과 멀티모달 상태 인식(Track 2) 두 트랙으로 나뉜 프로젝트로, 저는 MWGT 모델과 rPPG·표정 인식 서브모델을 맡았고, 문채린님이 트렌드 예측 모델과 멀티모달 통합 설계를 담당했습니다.',
+      '<strong>MWGT (Morning Walk Gait Transformer):</strong> 이전 훈련 기록을 바탕으로 다음 훈련 파라미터를 자동으로 조절해주는 AI 모델을 개발했습니다.',
+      '<strong>rPPG 생체신호 측정:</strong> 영상으로부터 생체 신호를 추정하는 rPPG 측정 모델을 멀티모달 시스템에 붙였습니다.',
+      '<strong>표정 인식:</strong> 훈련 중 환자의 표정을 분석해 체감 난이도를 1~8단계로 추정하는 모델을 개발해, 실시간 훈련 조정을 지원합니다.'
+    ],
+    note: '일부 기술적 세부사항은 산학협력 계약에 따라 구체적으로 공개하지 않습니다.'
+  },
+  {
+    icon: 'fa-solid fa-bone',
+    meta: '2026 – 진행 중 · 개인 연구 프로젝트',
+    title: '척추 이상 탐지 프레임워크 (OpenSim × Transformer)',
+    summary: '근골격계 시뮬레이션과 Transformer를 결합해 척추의 비정상적인 보상 움직임을 탐지하는 프로젝트입니다.',
+    tags: ['OpenSim', 'Transformer', 'PyTorch'],
+    metrics: [ ['0.0391','최종 학습 Loss'], ['0.03','정상 예측 확률'], ['0.99','비정상 예측 확률'] ],
+    bullets: [
+      '<strong>가설:</strong> 척추 특정 마디(L4-L5)가 굳으면, 부족한 가동범위를 보상하려고 위쪽 마디(L1-L2 등)가 과도하게 꺾입니다. 이런 보상 패턴을 AI가 잡아낼 수 있는지 확인해보는 프로젝트입니다.',
+      '<strong>데이터 생성:</strong> OpenSim 근골격계 모델로 정상 시퀀스와, L4-L5 가동범위를 30%로 제한한 비정상 시퀀스를 각각 시뮬레이션했습니다.',
+      '<strong>모델:</strong> 마디별 각도 시퀀스를 Transformer Encoder로 인코딩해 이상 여부를 분류했고, 정상·비정상 시퀀스를 뚜렷하게 구분했습니다.'
+    ]
+  },
+  {
+    icon: 'fa-solid fa-brain',
+    meta: '2026.05 · MIT Martinos Center 해커톤 선발 과정',
+    title: 'See the Tumor: 3D MRI 뇌종양 분할',
+    summary: '2D 분류부터 배포 가능한 웹 뷰어까지, 뇌종양 분할 및 3D 시각화 파이프라인을 만든 프로젝트입니다.',
+    tags: ['2D/3D U-Net', 'BraTS', 'FastAPI', 'NiiVue'],
+    metrics: [ ['0.8423','Val Dice 점수'], ['0.717','IoU 점수'], ['4채널','멀티모달 MRI'] ],
+    bullets: [
+      '<strong>1단계 — 2D 베이스라인:</strong> Grad-CAM으로 해석 가능한 ResNet 분류기를 학습시키고, 픽셀 단위 정보와 모달리티 간 정보가 부족하다는 한계를 확인했습니다.',
+      '<strong>2단계 — 3D 앙상블:</strong> 2D U-Net 3개와 3D U-Net을 가중 앙상블(2D × 0.4 + 3D × 0.6)로 결합해 3D 과분할 문제를 보정했습니다.',
+      '<strong>3단계 — 임상용 뷰어:</strong> 의료진 전용 로그인, JWT 인증, 감사 로그를 갖춘 NiiVue 기반 웹 뷰어를 붙여 배포 가능성을 보여줬습니다.'
+    ]
+  },
+  {
+    icon: 'fa-solid fa-pills',
+    meta: '2025 · 풀스택 학술 프로젝트',
+    title: 'PILLY PILLY: 경구약 식별 시스템',
+    summary: '시각장애인과 고령자가 알약을 식별하고 위험한 약물 상호작용을 피하도록 돕는 풀스택 모바일 시스템입니다.',
+    tags: ['YOLOv8', 'Flutter', 'FastAPI', 'Google OCR'],
+    metrics: [ ['92%','Top-20 정확도'], ['11.4×','정확도 향상'], ['3.82초','추론 시간'] ],
+    bullets: [
+      '<strong>데이터 구축:</strong> AI Hub의 대용량 경구약제 이미지 데이터셋을 내려받아 정제·라벨 정리 등 전처리 과정을 거친 뒤 학습에 사용했습니다.',
+      '<strong>가중 앙상블 AI:</strong> YOLOv8 분류(0.3), 색상 유사도(0.3), Google Vision OCR 텍스트 매칭(0.4)을 결합해 경구약을 식별했습니다.',
+      '<strong>복약 안전 정보 연동:</strong> 식약처 공공 API와 연동해 식별된 약물의 전반적인 정보를 제공하고, 두 가지 이상의 약물을 함께 입력하면 병용금기 여부까지 실시간으로 확인해줍니다.',
+      '<strong>풀스택 개발:</strong> Flutter(iOS/Android) 프론트엔드, FastAPI 백엔드, 챗봇·TTS 접근성 기능까지 직접 구현했습니다.'
+    ],
+    repo: 'https://github.com/baekgangmin/pilly-pilly'
+  },
+  {
+    icon: 'fa-solid fa-road-circle-exclamation',
+    meta: '2025.11 · 해커톤 프로젝트 · 서울AI재단 / AWS',
+    title: '지능형 도로 안전 결함 탐지',
+    summary: '블랙박스와 IMU 센서 데이터로 도로 유지보수 인사이트를 만드는 온디바이스 딥러닝 플랫폼입니다.',
+    tags: ['TFLite', 'Computer Vision', 'Sensor Fusion'],
+    bullets: [
+      '<strong>역할:</strong> 프론트엔드 개발 및 모델 최적화.',
+      '<strong>온디바이스 최적화:</strong> TFLite로 모델을 경량화해 차량 하드웨어에서 직접 결함 탐지가 돌아가도록 했습니다.',
+      '<strong>센서 퓨전:</strong> 블랙박스 영상과 IMU 센서 데이터를 결합해 실시간으로 도로 결함을 탐지했고, 인기상을 받았습니다.'
+    ],
+    repo: 'https://github.com/doxxeon/RoadGlass'
+  },
+  {
+    icon: 'fa-solid fa-lightbulb',
+    meta: '2026 – 현재 · 캡스톤 디자인 프로젝트 (PREP)',
+    title: 'PREP: 웰니스 스타트업 통합 플랫폼',
+    summary: '웰니스 스타트업 아이디어 심사부터 제안서 생성까지 자동화하는 플랫폼으로, 주로 AI 모델 개발을 맡았습니다.',
+    tags: ['NLP', 'Text Classification', 'FastAPI'],
+    bullets: [
+      '<strong>역할:</strong> 백엔드도 일부 맡았지만, 주로 아이디어 분류 AI 모델 개발을 담당했습니다.',
+      '<strong>데이터 구축:</strong> iOS/Android 앱스토어 리뷰를 크롤링하고, 팀에서 정한 기준에 맞춰 카테고리를 매핑하는 작업을 거쳐 학습 데이터를 만들었습니다.',
+      '<strong>카테고리 자동 분류 모델:</strong> 이 데이터로 모델을 학습시켜, 사용자가 입력한 문장을 자동으로 알맞은 카테고리로 분류해주는 모델을 개발했습니다.'
+    ],
+    repo: 'https://github.com/PREP-capstone'
+  }
+];
 
-    if ('IntersectionObserver' in window && dots.length && slides.length) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    dots.forEach((dot) => {
-                        dot.classList.toggle('active', dot.getAttribute('href') === `#${id}`);
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
+const grid = document.getElementById('projGrid');
+projects.forEach((p, i) => {
+  const card = document.createElement('button');
+  card.className = 'proj-card reveal';
+  card.style.setProperty('--rd', (0.05 * (i % 3)) + 's');
+  card.innerHTML = `
+    <div class="ic"><i class="${p.icon}"></i></div>
+    <div class="meta">${p.meta}</div>
+    <h3>${p.title}</h3>
+    <p class="sum">${p.summary}</p>
+    <div class="foot">자세히 보기 <i class="fa-solid fa-arrow-right"></i></div>
+  `;
+  card.addEventListener('click', () => openModal(i));
+  grid.appendChild(card);
+});
 
-        slides.forEach((slide) => observer.observe(slide));
-    }
+function initReveal(){
+  const targets = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    targets.forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  targets.forEach(el => io.observe(el));
+}
+initReveal();
+
+function fitOneLine(el, min, max){
+  if(!el) return;
+  let lo = min, hi = max;
+  el.style.fontSize = hi + 'px';
+  if(el.scrollWidth <= el.clientWidth){ return; }
+  while(lo < hi){
+    const mid = Math.ceil((lo + hi) / 2);
+    el.style.fontSize = mid + 'px';
+    if(el.scrollWidth <= el.clientWidth){ lo = mid; } else { hi = mid - 1; }
+  }
+  el.style.fontSize = lo + 'px';
+}
+const contactH2 = document.querySelector('footer.contact h2');
+function fitContactH2(){ fitOneLine(contactH2, 10, 36); }
+fitContactH2();
+window.addEventListener('resize', () => {
+  clearTimeout(window._fitTimer);
+  window._fitTimer = setTimeout(fitContactH2, 120);
+});
+if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fitContactH2); }
+
+const overlay = document.getElementById('overlay');
+const modal = document.getElementById('modal');
+
+function openModal(i){
+  const p = projects[i];
+  let metricsHtml = '';
+  if(p.metrics){
+    metricsHtml = '<div class="metrics">' + p.metrics.map(m => `<div class="metric"><div class="v">${m[0]}</div><div class="l">${m[1]}</div></div>`).join('') + '</div>';
+  }
+  let tagsHtml = '<div class="tags">' + p.tags.map(t => `<span>${t}</span>`).join('') + '</div>';
+  let bulletsHtml = '<ul>' + p.bullets.map(b => `<li>${b}</li>`).join('') + '</ul>';
+  let repoHtml = p.repo ? `<a class="repo" href="${p.repo}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> 저장소 보기</a>` : '';
+  let noteHtml = p.note ? `<p style="margin-top:18px;font-size:12.5px;color:#9ca3af;font-style:italic;">${p.note}</p>` : '';
+
+  modal.innerHTML = `
+    <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+    <div class="ic"><i class="${p.icon}"></i></div>
+    <div class="meta">${p.meta}</div>
+    <h3>${p.title}</h3>
+    ${tagsHtml}
+    ${metricsHtml}
+    ${bulletsHtml}
+    ${repoHtml}
+    ${noteHtml}
+  `;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+}
+
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 </script>
 
 </body>
